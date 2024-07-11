@@ -1,0 +1,12 @@
+import java.io.*;
+class Stringvalue
+{
+  public static void main(String arg[])
+   {
+    String str1="dmi college of engineering";
+    String str2="mechanical department";
+
+    System.out.println(str1);
+    System.out.println(str2);
+   }
+}

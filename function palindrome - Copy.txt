@@ -1,0 +1,415 @@
+function palindrome(){
+var number
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f3f6;
+        }
+        .header {
+            background-color: #2874f0;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+        .header .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 2px;
+        }
+        .header .user-actions {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-bar {
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav-bar a {
+            margin: 0 15px;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            width: 23%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            display: none; /* Initially hide all products */
+            transition: transform 0.2s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-info h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product-info .price {
+            color: #2874f0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .product-info .discount {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .footer {
+            background-color: #2874f0;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .mobiles { background-color: #e6f2ff; }
+        .electronics { background-color: #f2e6ff; }
+        .fashion { background-color: #ffe6e6; }
+        .appliances { background-color: #e6ffe6; }
+        .grocery { background-color: #fff0e6; }
+        .more { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Flipkart</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products, brands and more">
+        </div>
+        <div class="user-actions">
+            <div>Login</div>
+            <div>More</div>
+            <div>Cart</div>
+        </div>
+    </div>
+    <div class="nav-bar">
+        <a onclick="filterProducts('all')">Home</a>
+        <a onclick="filterProducts('mobiles')">Mobiles</a>
+        <a onclick="filterProducts('electronics')">Electronics</a>
+        <a onclick="filterProducts('fashion')">Fashion</a>
+        <a onclick="filterProducts('appliances')">Appliances</a>
+        <a onclick="filterProducts('grocery')">Grocery</a>
+        <a onclick="filterProducts('more')">More</a>
+    </div>
+    <div class="container">
+        <div class="product-grid">
+            <!-- Mobiles Category -->
+            <div class="product mobiles" data-category="mobiles">
+                <img src="product1.jpg" alt="Mobile 1">
+                <div class="product-info">
+                    <h3>Mobile 1</h3>
+                    <p class="price">&#8377; 9999</p>
+                    <p class="discount">Save &#8377; 2000</p>
+                </div>
+            </div>
+            <div class="product mobiles" data-category="mobiles">
+                <img src="product2.jpg" alt="Mobile 2">
+                <div class="product-info">
+                    <h3>Mobile 2</h3>
+                    <p class="price">&#8377; 8999</p>
+                    <p class="discount">Save &#8377; 1500</p>
+                </div>
+            </div>
+            <div class="product mobiles" data-category="mobiles">
+                <img src="product3.jpg" alt="Mobile 3">
+                <div class="product-info">
+                    <h3>Mobile 3</h3>
+                    <p class="price">&#8377; 12999</p>
+                    <p class="discount">Save &#8377; 3000</p>
+                </div>
+            </div>
+            <div class="product mobiles" data-category="mobiles">
+                <img src="product4.jpg" alt="Mobile 4">
+                <div class="product-info">
+                    <h3>Mobile 4</h3>
+                    <p class="price">&#8377; 14999</p>
+                    <p class="discount">Save &#8377; 3500</p>
+                </div>
+            </div>
+            <div class="product mobiles" data-category="mobiles">
+                <img src="product5.jpg" alt="Mobile 5">
+                <div class="product-info">
+                    <h3>Mobile 5</h3>
+                    <p class="price">&#8377; 7999</p>
+                    <p class="discount">Save &#8377; 1000</p>
+                </div>
+            </div>
+
+            <!-- Electronics Category -->
+            <div class="product electronics" data-category="electronics">
+                <img src="product6.jpg" alt="Electronics 1">
+                <div class="product-info">
+                    <h3>Electronics 1</h3>
+                    <p class="price">&#8377; 2999</p>
+                    <p class="discount">Save &#8377; 500</p>
+                </div>
+            </div>
+            <div class="product electronics" data-category="electronics">
+                <img src="product7.jpg" alt="Electronics 2">
+                <div class="product-info">
+                    <h3>Electronics 2</h3>
+                    <p class="price">&#8377; 4999</p>
+                    <p class="discount">Save &#8377; 1000</p>
+                </div>
+            </div>
+            <div class="product electronics" data-category="electronics">
+                <img src="product8.jpg" alt="Electronics 3">
+                <div class="product-info">
+                    <h3>Electronics 3</h3>
+                    <p class="price">&#8377; 5999</p>
+                    <p class="discount">Save &#8377; 1200</p>
+                </div>
+            </div>
+            <div class="product electronics" data-category="electronics">
+                <img src="product9.jpg" alt="Electronics 4">
+                <div class="product-info">
+                    <h3>Electronics 4</h3>
+                    <p class="price">&#8377; 6999</p>
+                    <p class="discount">Save &#8377; 1500</p>
+                </div>
+            </div>
+            <div class="product electronics" data-category="electronics">
+                <img src="product10.jpg" alt="Electronics 5">
+                <div class="product-info">
+                    <h3>Electronics 5</h3>
+                    <p class="price">&#8377; 8999</p>
+                    <p class="discount">Save &#8377; 2000</p>
+                </div>
+            </div>
+
+            <!-- Fashion Category -->
+            <div class="product fashion" data-category="fashion">
+                <img src="product11.jpg" alt="Fashion 1">
+                <div class="product-info">
+                    <h3>Fashion 1</h3>
+                    <p class="price">&#8377; 1999</p>
+                    <p class="discount">Save &#8377; 500</p>
+                </div>
+            </div>
+            <div class="product fashion" data-category="fashion">
+                <img src="product12.jpg" alt="Fashion 2">
+                <div class="product-info">
+                    <h3>Fashion 2</h3>
+                    <p class="price">&#8377; 2499</p>
+                    <p class="discount">Save &#8377; 600</p>
+                </div>
+            </div>
+            <div class="product fashion" data-category="fashion">
+                <img src="product13.jpg" alt="Fashion 3">
+                <div class="product-info">
+                    <h3>Fashion 3</h3>
+                    <p class="price">&#8377; 2999</p>
+                    <p class="discount">Save &#8377; 700</p>
+                </div>
+            </div>
+            <div class="product fashion" data-category="fashion">
+                <img src="product14.jpg" alt="Fashion 4">
+                <div class="product-info">
+                    <h3>Fashion 4</h3>
+                    <p class="price">&#8377; 3499</p>
+                    <p class="discount">Save &#8377; 800</p>
+                </div>
+            </div>
+            <div class="product fashion" data-category="fashion">
+                <img src="product15.jpg" alt="Fashion 5">
+                <div class="product-info">
+                    <h3>Fashion 5</h3>
+                    <p class="price">&#8377; 3999</p>
+                    <p class="discount">Save &#8377; 900</p>
+                </div>
+            </div>
+
+            <!-- Appliances Category -->
+            <div class="product appliances" data-category="appliances">
+                <img src="product16.jpg" alt="Appliances 1">
+                <div class="product-info">
+                    <h3>Appliances 1</h3>
+                    <p class="price">&#8377; 9999</p>
+                    <p class="discount">Save &#8377; 2000</p>
+                </div>
+            </div>
+            <div class="product appliances" data-category="appliances">
+                <img src="product17.jpg" alt="Appliances 2">
+                <div class="product-info">
+                    <h3>Appliances 2</h3>
+                    <p class="price">&#8377; 11999</p>
+                    <p class="discount">Save &#8377; 2500</p>
+                </div>
+            </div>
+            <div class="product appliances" data-category="appliances">
+                <img src="product18.jpg" alt="Appliances 3">
+                <div class="product-info">
+                    <h3>Appliances 3</h3>
+                    <p class="price">&#8377; 13999</p>
+                    <p class="discount">Save &#8377; 3000</p>
+                </div>
+            </div>
+            <div class="product appliances" data-category="appliances">
+                <img src="product19.jpg" alt="Appliances 4">
+                <div class="product-info">
+                    <h3>Appliances 4</h3>
+                    <p class="price">&#8377; 15999</p>
+                    <p class="discount">Save &#8377; 3500</p>
+                </div>
+            </div>
+            <div class="product appliances" data-category="appliances">
+                <img src="product20.jpg" alt="Appliances 5">
+                <div class="product-info">
+                    <h3>Appliances 5</h3>
+                    <p class="price">&#8377; 17999</p>
+                    <p class="discount">Save &#8377; 4000</p>
+                </div>
+            </div>
+
+            <!-- Grocery Category -->
+            <div class="product grocery" data-category="grocery">
+                <img src="product21.jpg" alt="Grocery 1">
+                <div class="product-info">
+                    <h3>Grocery 1</h3>
+                    <p class="price">&#8377; 199</p>
+                    <p class="discount">Save &#8377; 50</p>
+                </div>
+            </div>
+            <div class="product grocery" data-category="grocery">
+                <img src="product22.jpg" alt="Grocery 2">
+                <div class="product-info">
+                    <h3>Grocery 2</h3>
+                    <p class="price">&#8377; 299</p>
+                    <p class="discount">Save &#8377; 70</p>
+                </div>
+            </div>
+            <div class="product grocery" data-category="grocery">
+                <img src="product23.jpg" alt="Grocery 3">
+                <div class="product-info">
+                    <h3>Grocery 3</h3>
+                    <p class="price">&#8377; 399</p>
+                    <p class="discount">Save &#8377; 90</p>
+                </div>
+            </div>
+            <div class="product grocery" data-category="grocery">
+                <img src="product24.jpg" alt="Grocery 4">
+                <div class="product-info">
+                    <h3>Grocery 4</h3>
+                    <p class="price">&#8377; 499</p>
+                    <p class="discount">Save &#8377; 110</p>
+                </div>
+            </div>
+            <div class="product grocery" data-category="grocery">
+                <img src="product25.jpg" alt="Grocery 5">
+                <div class="product-info">
+                    <h3>Grocery 5</h3>
+                    <p class="price">&#8377; 599</p>
+                    <p class="discount">Save &#8377; 130</p>
+                </div>
+            </div>
+
+            <!-- More Category -->
+            <div class="product more" data-category="more">
+                <img src="product26.jpg" alt="More 1">
+                <div class="product-info">
+                    <h3>More 1</h3>
+                    <p class="price">&#8377; 15999</p>
+                    <p class="discount">Save &#8377; 3500</p>
+                </div>
+            </div>
+            <div class="product more" data-category="more">
+                <img src="product27.jpg" alt="More 2">
+                <div class="product-info">
+                    <h3>More 2</h3>
+                    <p class="price">&#8377; 17999</p>
+                    <p class="discount">Save &#8377; 4000</p>
+                </div>
+            </div>
+            <div class="product more" data-category="more">
+                <img src="product28.jpg" alt="More 3">
+                <div class="product-info">
+                    <h3>More 3</h3>
+                    <p class="price">&#8377; 19999</p>
+                    <p class="discount">Save &#8377; 4500</p>
+                </div>
+            </div>
+            <div class="product more" data-category="more">
+                <img src="product29.jpg" alt="More 4">
+                <div class="product-info">
+                    <h3>More 4</h3>
+                    <p class="price">&#8377; 21999</p>
+                    <p class="discount">Save &#8377; 5000</p>
+                </div>
+            </div>
+            <div class="product more" data-category="more">
+                <img src="product30.jpg" alt="More 5">
+                <div class="product-info">
+                    <h3>More 5</h3>
+                    <p class="price">&#8377; 23999</p>
+                    <p class="discount">Save &#8377; 5500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Flipkart. All rights reserved.</p>
+    </div>
+    <script>
+        function filterProducts(category) {
+            var products = document.querySelectorAll('.product');
+            products.forEach(function(product) {
+                if (category === 'all') {
+                    product.style.display = 'block';
+                } else {
+                    if (product.getAttribute('data-category') === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Initially show all products
+        filterProducts('all');
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+public class IncrementExample {
+    public static void main(String[] args) {
+        int x = 5;
+        
+        // Increment x by 1
+        x++;
+        
+        System.out.println("The value of x after incrementing: " + x);
+    }
+}

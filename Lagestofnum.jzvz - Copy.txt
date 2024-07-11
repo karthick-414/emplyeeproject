@@ -1,0 +1,14 @@
+import java.io.*;
+class Lagestofnum
+{
+    public static void main(String args[])
+    {
+    int a=98;
+    int b=87;
+    int c=57;
+    int result;
+
+    result=((a>b)&&(a>c))?a:(b>c)?(b>c);
+    System.out.println("lagest of three numbers="+result);
+  }                     
+}
